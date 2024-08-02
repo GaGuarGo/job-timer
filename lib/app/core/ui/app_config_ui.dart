@@ -17,20 +17,24 @@ class AppConfigUi {
   });
 
   static final ThemeData theme = ThemeData(
-      useMaterial3: false,
-      primarySwatch: _primarySwatch,
-      primaryColor: const Color(0xFF0066B0),
-      primaryColorLight: const Color(0xFF219FFF),
-      inputDecorationTheme: const InputDecorationTheme(
-        border: OutlineInputBorder(),
-        enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        labelStyle: TextStyle(color: Colors.black),
+    useMaterial3: false,
+    primarySwatch: _primarySwatch,
+    primaryColor: const Color(0xFF0066B0),
+    primaryColorLight: const Color(0xFF219FFF),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: OutlineInputBorder(),
+      enabledBorder:
+          OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+      focusedBorder:
+          OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+      labelStyle: TextStyle(color: Colors.black),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)))));
+    ),
+  );
 }
