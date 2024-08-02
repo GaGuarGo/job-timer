@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:job_timer/app/entities/project_status.dart';
 
 class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
@@ -33,7 +34,9 @@ class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
               SizedBox(
                   width: constraints.maxWidth * 0.4,
                   child: ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Modular.to.pushNamed('/project/register');
+                      },
                       icon: const Icon(Icons.add),
                       label: const Text("Novo Projeto")))
             ],

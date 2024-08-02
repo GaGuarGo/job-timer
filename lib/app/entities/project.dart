@@ -8,9 +8,10 @@ part 'project.g.dart';
 @Collection()
 class Project {
   
-  Id id = Isar.autoIncrement;
+  Id? id = Isar.autoIncrement;
 
   late String name;
+  late int estimate;
   @enumerated
   late ProjectStatus status;
   final tasks = IsarLinks<ProjectTask>();
