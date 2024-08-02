@@ -1,4 +1,5 @@
 import 'package:job_timer/app/entities/project.dart';
+import 'package:job_timer/app/entities/project_status.dart';
 import 'package:job_timer/app/repositories/projects/project_repository.dart';
 import 'package:job_timer/app/view_model/project_model.dart';
 
@@ -19,5 +20,11 @@ class ProjectServiceImpl extends ProjectService {
       ..estimate = projectModel.estimate;
 
     await _repository.register(project);
+  }
+
+  @override
+  Future<List<ProjectModel>> findByStatus(ProjectStatus status) async {
+    final projects = await _repository.findByStatus(status);
+    return projects.map(ProjectModel.fromEntity).toList();
   }
 }

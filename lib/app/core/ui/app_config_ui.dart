@@ -21,6 +21,7 @@ class AppConfigUi {
     primarySwatch: _primarySwatch,
     primaryColor: const Color(0xFF0066B0),
     primaryColorLight: const Color(0xFF219FFF),
+    scaffoldBackgroundColor: Colors.white,
     inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(),
       enabledBorder:
