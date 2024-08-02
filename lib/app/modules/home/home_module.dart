@@ -3,13 +3,10 @@ import 'package:job_timer/app/modules/home/home_page.dart';
 
 class HomeModule extends Module {
   @override
-  void binds(Injector i) {
-    // TODO: implement binds
-    super.binds(i);
-  }
+  List<Bind<Object>> get binds => [];
 
   @override
-  void routes(RouteManager r) {
-    r.child('/', child: (context) => const HomePage());
-  }
+  List<ModularRoute> get routes => [
+    ChildRoute('/', child: (context, args) => const HomePage(),)
+  ];
 }
