@@ -38,4 +38,12 @@ class HomeController extends Cubit<HomeState> {
           projectFilter: status),
     );
   }
+
+  Future<void> updateList() async {
+    if (state.status == HomeStatus.complete) {
+      filter(state.projectFilter);
+    } else {
+      filter(ProjectStatus.em_andamento);
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:job_timer/app/modules/home/controller/home_controller.dart';
 import 'package:job_timer/app/view_model/project_model.dart';
 
 class ProjectTile extends StatelessWidget {
@@ -9,8 +10,9 @@ class ProjectTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Modular.to.pushNamed('/project/detail', arguments: project);
+      onTap: () async {
+        await Modular.to.pushNamed('/project/detail', arguments: project);
+        Modular.get<HomeController>().updateList();
       },
       child: Container(
         constraints: const BoxConstraints(maxHeight: 90),
@@ -60,8 +62,8 @@ class _ProjectProgress extends StatelessWidget {
         .fold<int>(0, (previousValue, task) => previousValue += task.duration);
     var percent = 0.0;
 
-    if(totalTasks > 0) {
-      percent = totalTasks/project.estimate;
+    if (totalTasks > 0) {
+      percent = totalTasks / project.estimate;
     }
 
     return Container(
