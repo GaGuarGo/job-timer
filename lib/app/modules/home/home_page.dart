@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                     BorderRadius.vertical(bottom: Radius.circular(15)),
               ),
             ),
-            SliverPersistentHeader(delegate: HeaderProjectMenu(), pinned: true),
+            SliverPersistentHeader(delegate: HeaderProjectMenu(homeController: homeController), pinned: true),
             BlocSelector<HomeController, HomeState, bool>(
               bloc: homeController,
               selector: (state) => state.status == HomeStatus.loading,
