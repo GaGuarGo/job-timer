@@ -1,6 +1,7 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:job_timer/app/core/ui/button_with_loader.dart';
 import 'package:job_timer/app/modules/project/register/controller/project_register_controller.dart';
 import 'package:validatorless/validatorless.dart';
 
@@ -76,23 +77,13 @@ class _ProductRegisterPageState extends State<ProductRegisterPage> {
                   ]),
                 ),
                 const SizedBox(height: 10),
-                BlocSelector<ProjectRegisterController, ProjectRegisterStatus,
-                    bool>(
-                  bloc: widget.controller,
-                  selector: (state) => state == ProjectRegisterStatus.loading,
-                  builder: (context, state) {
-                    return Visibility(
-                      visible: state,
-                      child: const Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      ),
-                    );
-                  },
-                ),
                 SizedBox(
                   width: double.infinity,
                   height: 50,
-                  child: ElevatedButton(
+                  child: ButtonWithLoader<ProjectRegisterController,
+                      ProjectRegisterStatus>(
+                    bloc: widget.controller,
+                    selector: (state) => state == ProjectRegisterStatus.loading,
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         final name = _nameEC.text;
@@ -101,7 +92,7 @@ class _ProductRegisterPageState extends State<ProductRegisterPage> {
                         widget.controller.register(name, estimate);
                       }
                     },
-                    child: const Text('Salvar'),
+                    label: 'Salvar',
                   ),
                 ),
               ],
